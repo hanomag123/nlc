@@ -1,11 +1,15 @@
 <header class="header">
-  {{> menu}}
-
-  <button class="menu-button myclass">
-    <span class="burger-button-close">
-      <span id="first-line-burger"></span>
-      <span id="second-line-burger"></span>
-      <span id="third-line-burger"></span>
-  </span>
-  </button>
+  <div class="page-wrapper flex justify-between">
+    <div class="logo w-[24.6rem] h-40 py-30 box-content"></div>
+  
+    {{> menu}}
+  
+    <button class="menu-button myclass">
+      <span class="burger-button-close">
+        <span id="first-line-burger"></span>
+        <span id="second-line-burger"></span>
+        <span id="third-line-burger"></span>
+      </span>
+    </button>
+  </div>
 </header>

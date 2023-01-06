@@ -1,17 +1,26 @@
 .menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  transform: translateX(100%);
-  height: 100%;
-  width: 30%;
-  background-color: lightblue;
-  transition: all 1s ease;
-  display: none;
+  display: flex;
+  gap: 6rem;
+  align-items: center;
+  justify-content: space-between;
   @include breakpoint($xl-bp) {
-    display: block;
-    height: 100vh;
+    height: calc(100% - 10rem);
+    overflow: auto;
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    z-index: 3;
+    transform: translateX(100%);
+    width: 100%;
+    background-color: var(--header);
+    transition: transform .5s ease;
+    padding: 2.4rem 2rem;
+    flex-direction: column;
+  }
+  .menu__right-block {
+    display: flex;
+    gap: 6rem;
+    align-items: center;
   }
 }
 
@@ -107,4 +116,51 @@
   top: 0;
   width: 100%;
   height: 100%;
+}
+
+div.select-button {
+  position: relative;
+  &::before {
+    content: attr(data-text);
+  }
+  i {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    @include breakpoint($sm-bp) {
+      right: 0.2rem;
+      top: 0.7rem;
+    }
+  }
+}
+div.select-button:focus + .select-lang {
+  visibility: visible;
+  opacity: 1;
+  top: 100%;
+}
+
+div.select-lang {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border: 0.1rem solid var(--lblue);
+  border-radius: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .5s ease;
+  a {
+    padding: 1rem;
+    color: var(--black);
+    &:hover {
+      color: var(--orange);
+    }
+  }
+}
+div.select-lang:focus{
+  top:5rem;
+  visibility:visible;
+  opacity:1;
 }
