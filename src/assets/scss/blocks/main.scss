@@ -69,6 +69,30 @@
   background-position: center;
 }
 
+.why {
+  .swiper {
+    .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      @include breakpoint($xl-bp) {
+        display: flex;
+        gap: 0;
+      }
+      .swiper-slide {
+        width: auto;
+        @include breakpoint($xl-bp) {
+          width: 26.6rem;
+          margin-right: 3rem;
+        }
+        @include breakpoint($sm-bp) {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}
+
 .custom-num {
   li {
     counter-increment: num;
@@ -79,6 +103,9 @@
     align-items: center;
     gap: 2rem;
     position: relative;
+    @include breakpoint($xl-bp) {
+      font-size: 1.8rem;
+    }
     &::before {
       font-weight: 500;
       font-size: 3.4rem;
@@ -86,6 +113,10 @@
       content: counter(num, decimal-leading-zero);
       color: var(--blue);
       padding: 1rem;
+      @include breakpoint($xl-bp) {
+        font-size: 2.4rem;
+        line-height: 110%;
+      }
     }
     &::after {
       content: '';
@@ -95,6 +126,11 @@
       height: 3rem;
       width: 0.2rem;
       background-color: var(--gray);
+      @include breakpoint($xl-bp) {
+        height: 2rem;
+        top: -2rem;
+        left: 2.5rem;
+      }
     }
     &:first-child {
       &::after {
@@ -106,15 +142,15 @@
 
 h1,h2,h3 {
   letter-spacing: 1px;
+  @include breakpoint($xl-bp) {
+    letter-spacing: normal;
+  }
 }
 
 .showall {
   ul {
-    max-height: var(--max-height);
-    transition: max-height .3s;
-    overflow: hidden;
     li {
-      transition: opacity .3s;
+      transition: opacity .4s;
       will-change: opacity;
     }
   }
@@ -166,4 +202,44 @@ input[type="checkbox"]:checked + label:before {
   border-left-color: transparent;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.footer {
+  .footer__inner {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    row-gap: 8rem;
+    @include breakpoint($xl-bp) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+      row-gap: 6rem;
+    }
+    nav {
+      a {
+        color: var(--white);
+        position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 0;
+              height: 0.1rem;
+              background-color: var(--white);
+              transition: width .3s;
+            }
+            &:hover {
+              &::after {
+                width: 100%;
+              }
+            }
+      }
+    }
+  }
+}
+
+.anim-title {
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
 }
