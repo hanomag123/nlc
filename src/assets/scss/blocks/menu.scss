@@ -31,6 +31,7 @@
       flex-direction: column;
       align-items: flex-start;
       padding: 2rem;
+      gap: 4rem;
     }
     @include breakpoint($sm-bp) {
       padding: 0;
@@ -78,7 +79,7 @@
     #third-line-burger {
         width: 100%;
         height: 0.2rem;
-        border-radius: 0.1rem;
+        border-radius: 0.2rem;
         background-color: black;
         position: absolute;
         top: 50%;
@@ -86,13 +87,13 @@
         transform: translateX(-50%);
         transform-origin: center center;
         transition: transform 0.4s ease, opacity 0.4s ease;
-        @include breakpoint($xl-bp) {
-          border-radius: 0;
-        }
     }
 
     #first-line-burger {
         top: 0%;
+    }
+    #second-line-burger {
+      top: 46%;
     }
     #third-line-burger {
         top: unset;

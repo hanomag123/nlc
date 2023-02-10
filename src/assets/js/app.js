@@ -248,15 +248,15 @@ if (titles.length) {
 
   if (regModal) {
     regModal.forEach(el => {
+      const closeButton = el.querySelector('.close-button')
+      if (closeButton) {
+        closeButton.addEventListener('click', () => {
+          modalHandler.apply(el)
+        })
+      }
       el.addEventListener('click', function () {
         if (event.target.classList.contains('regModal')) {
           modalHandler.apply(this)
-        }
-        const closeButton = el.querySelector('.close-button')
-        if (closeButton) {
-          closeButton.addEventListener('click', () => {
-            modalHandler.apply(this)
-          })
         }
       })
     })
@@ -310,7 +310,7 @@ if (titles.length) {
     form.addEventListener('submit', function () {
       event.preventDefault()
       const formData = new FormData(this)
-      doAPIcall('POST', formData, './server.php', function(data) {
+      doAPIcall('POST', formData, './send.php', function(data) {
         console.log(data)
       })
       const parent = this.closest('.regModal');
